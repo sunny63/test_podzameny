@@ -6,7 +6,10 @@ RUN apt update \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && pecl install xdebug-3.0.1 \
+    && docker-php-ext-enable xdebug
+
 
 WORKDIR /var/www/symfony_docker
 
@@ -14,5 +17,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
-RUN git config --global user.email "hataiiia1999@mail.ru" \ 
+RUN git config --global user.email "hataiiia1999@mail.ru" \
     && git config --global user.name "Nata"
