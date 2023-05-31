@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    <style>
+        .wrapper {
+            margin: 1em auto;
+            width: 95%;
+        }
+    </style>
+
+    <div class="wrapper">
+        <h1>Products</h1>
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Бренд производителя</th>
+                <th scope="col">Артикул товара</th>
+                <th scope="col">Название товара</th>
+                <th scope="col">Количество на складе</th>
+                <th scope="col">Стоимость товара в копейках</th>
+                <th scope="col">Время доставки со склада в секундах</th>
+                <th scope="col">Код товара</th>
+                <th scope="col">Код склада</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ product.brand }}</td>
+                    <td>{{ product.article }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.deliveryDuration }}</td>
+                    <td>{{ product.vendorId }}</td>
+                    <td>{{ product.warehouseAlias }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
